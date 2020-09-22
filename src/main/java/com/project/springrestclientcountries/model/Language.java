@@ -1,16 +1,18 @@
 
 package com.project.springrestclientcountries.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Language {
+public class Language implements Serializable {
 
-    private String iso6391;
+	private String iso6391;
     private String iso6392;
     private String name;
     private String nativeName;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private static final long serialVersionUID = -464614483092460502L;
 
     public String getIso6391() {
         return iso6391;

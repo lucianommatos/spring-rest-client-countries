@@ -1,17 +1,19 @@
 
 package com.project.springrestclientcountries.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RegionalBloc {
+public class RegionalBloc implements Serializable {
 
-    private String acronym;
+	private String acronym;
     private String name;
     private List<String> otherAcronyms = null;
     private List<String> otherNames = null;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private static final long serialVersionUID = -216472971852525242L;
 
     public String getAcronym() {
         return acronym;

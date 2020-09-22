@@ -1,13 +1,14 @@
 
 package com.project.springrestclientcountries.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Country {
+public class Country implements Serializable {
 
-    private String name;
+	private String name;
     private List<String> topLevelDomain = null;
     private String alpha2Code;
     private String alpha3Code;
@@ -32,6 +33,7 @@ public class Country {
     private List<RegionalBloc> regionalBlocs = null;
     private String cioc;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private static final long serialVersionUID = -774780808488402537L;
 
     public String getName() {
         return name;

@@ -1,12 +1,13 @@
 
 package com.project.springrestclientcountries.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Translations {
+public class Translations implements Serializable {
 
-    private String de;
+	private String de;
     private String es;
     private String fr;
     private String ja;
@@ -17,6 +18,8 @@ public class Translations {
     private String hr;
     private String fa;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private static final long serialVersionUID = -3350795432023510266L;
+    
 
     public String getDe() {
         return de;

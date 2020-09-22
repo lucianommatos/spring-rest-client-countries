@@ -1,15 +1,17 @@
 
 package com.project.springrestclientcountries.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Currency {
+public class Currency implements Serializable {
 
-    private String code;
+	private String code;
     private String name;
     private String symbol;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private static final long serialVersionUID = -8706698842390723598L;
 
     public String getCode() {
         return code;
