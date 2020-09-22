@@ -3,8 +3,10 @@ package com.project.springrestclientcountries.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.project.springrestclientcountries.model.Country;
 
@@ -12,22 +14,26 @@ import com.project.springrestclientcountries.model.Country;
 public class ApiServiceImpl implements ApiService {
 	
 	private RestTemplate restTemplate;
+	
+	private final String api_uri;
 
-	public ApiServiceImpl(RestTemplate restTemplate) {
+	public ApiServiceImpl(RestTemplate restTemplate, @Value("${api.uri}") String api_uri) {
 		this.restTemplate = restTemplate;
+		this.api_uri = api_uri;
 	}
 
 	@Override
 	public List<Country> getCountries(String name) {
+		UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(api_uri).path("name/").path(name);
+		
+		Country[] countries = restTemplate.getForObject(uriBuilder.toUriString(), Country[].class);
+		
 		List<Country> result = new ArrayList<Country>();
-		Country[] countries;
-		countries = restTemplate.getForObject("https://restcountries.eu/rest/v2/name/brazil", Country[].class);
+		
 		for (Country country : countries) {
-			System.out.println("Adding Country");
-			System.out.println("Name: " + country.getName());
-			System.out.println("Capital: " + country.getCapital());
 			result.add(country);
 		}
+		
 		return result;
 	}
 

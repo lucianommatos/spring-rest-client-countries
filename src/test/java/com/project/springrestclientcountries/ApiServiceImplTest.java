@@ -15,7 +15,7 @@ public class ApiServiceImplTest {
 	
 	@Test
 	public void testGetCountries() {
-		Assertions.assertEquals("Brazil", apiService.getCountries("Brasil").get(0).getName());
+		Assertions.assertEquals("Brazil", apiService.getCountries("brazil").get(0).getName());
 	}
 
 }
