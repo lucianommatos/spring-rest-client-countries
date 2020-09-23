@@ -15,16 +15,16 @@ public class ApiServiceImpl implements ApiService {
 	
 	private RestTemplate restTemplate;
 	
-	private final String api_uri;
+	private final String api_url;
 
-	public ApiServiceImpl(RestTemplate restTemplate, @Value("${api.uri}") String api_uri) {
+	public ApiServiceImpl(RestTemplate restTemplate, @Value("${api.url}") String api_url) {
 		this.restTemplate = restTemplate;
-		this.api_uri = api_uri;
+		this.api_url = api_url;
 	}
 
 	@Override
 	public List<Country> getCountries(String name) {
-		UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(api_uri).path("name/").path(name);
+		UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(api_url).path("name/").path(name);
 		
 		Country[] countries = restTemplate.getForObject(uriBuilder.toUriString(), Country[].class);
 		
